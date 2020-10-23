@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Template</title>
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.0/css/all.css"
+      integrity="sha384-OLYO0LymqQ+uHXELyx93kblK5YIS3B2ZfLGBmsJaUyor7CpMTBsahDHByqSuWW+q"
+      crossorigin="anonymous"
+    />
+    <!-- Bootstrap Reset -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap-reboot.min.css"
+    />
+    <!-- Bootswatch Darkly-->
+    <link
+      rel="stylesheet"
+      href="https://bootswatch.com/4/darkly/bootstrap.min.css"
+    />
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- app Vue -->
+    <div id="app">
+      <h1 class="text-center m-3">
+        Template HTML 5 - Font Awesome - Bootstrap 4 - vue.js
+      </h1>
+      <div class="d-flex justify-content-around">
+        <!-- add user -->
+        <div class="my-3 w-25">
+          <button
+            class="btn btn-outline-info btn-block"
+            data-toggle="collapse"
+            data-target="#add-user"
+          >
+            Add User
+          </button>
+          <div id="add-user" class="collapse">
+            <form
+              @submit.prevent="AddUser"
+              class="rounded p-3 bg-white text-dark m-2"
+            >
+              <fieldset>
+                <legend>Add Users</legend>
+                <input
+                  class="form-control m-1"
+                  type="text"
+                  placeholder="Name"
+                  name="name"
+                />
+                <input
+                  class="form-control m-1"
+                  type="email"
+                  placeholder="Email"
+                  name="email"
+                />
+                <input
+                  class="form-control m-1"
+                  type="tel"
+                  placeholder="Phone"
+                  name="phone"
+                />
+                <input
+                  class="form-control m-1"
+                  type="text"
+                  placeholder="Website"
+                  name="website"
+                />
+                <input
+                  class="form-control m-1"
+                  type="text"
+                  placeholder="City"
+                  name="city"
+                />
+                <input class="btn btn-info btn-block m-1" type="submit" />
+              </fieldset>
+            </form>
+          </div>
+        </div>
+        <!-- mostrar cantidad usuarios -->
+        <div class="my-3 w-25">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">¿Cuantos usuarios desea ver?</span>
+            </div>
+            <input
+              type="number"
+              class="form-control"
+              v-model.number="cantUser"
+              :max="users.length"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="grid">
+        <user-card
+          v-for="user in usersData"
+          :key="user.id"
+          :user-data="user"
+          @delete="deleteUser"
+        ></user-card>
+      </div>
+    </div>
+    <!-- Scripts -->
+    <div>
+      <!-- Vue -->
+      <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+      <!-- Scripts Bootstrap -->
+      <script
+        src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"
+      ></script>
+      <script
+        src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"
+      ></script>
+      <script
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"
+      ></script>
+      <!-- JavaScript -->
+      <script src="js/vue.js"></script>
+      <script src="js/main.js"></script>
+    </div>
+  </body>
+</html>
